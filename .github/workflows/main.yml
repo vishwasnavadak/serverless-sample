@@ -1,0 +1,25 @@
+name: Serverless Deployement
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Run a multi-line script
+      run: npm install 
+      
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      with:
+        args: deploy
