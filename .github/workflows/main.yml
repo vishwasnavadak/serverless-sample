@@ -6,24 +6,25 @@ on:
       - master
 
 jobs:
-  build:
-    name: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: npm install
-        run: npm install
-
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
-      - name: serverless deploy
+      - name: npm install dependencies
+        run: npm install
+        
+      - name: deploy using serverless action
         uses: serverless/github-action@master
-
         with:
           args: deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+#       - name: Cache the node_modules
+#         uses: actions/cache@v1.0.3
+#         with:
+#           path: 
+          
+       
