@@ -21,7 +21,9 @@ jobs:
 
     steps:
       - name: serverless deploy
-        uses: serverless/github-action@master
+      - uses: serverless/github-action@master
+        run: serverless deploy
+
         with:
           args: deploy
         env:
