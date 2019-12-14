@@ -24,9 +24,9 @@ jobs:
         with:
           args: deploy
       
-#       - name: Cache the node_modules
-#         uses: actions/cache@v1.0.3
-#         with:
-#           path: 
+      - name: Cache the node_modules
+        uses: actions/cache@v1.0.3
+        with:
+          path: node_modules
           
        
