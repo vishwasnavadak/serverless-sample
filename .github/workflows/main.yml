@@ -23,10 +23,4 @@ jobs:
         uses: serverless/github-action@v1.53.0
         with:
           args: deploy
-      
-      - name: Cache the node_modules
-        uses: actions/cache@v1.0.3
-        with:
-          path: node_modules
-          
        
